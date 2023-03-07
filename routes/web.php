@@ -1,9 +1,9 @@
 <?php
- 
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
- 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::resource("/task", TaskController::class);
+
+Route::get('/', [TaskController::class, 'index']);
+Route::get('/tasks', [TaskController::class, 'index']);
+Route::post('/task', [TaskController::class, 'store']);
+Route::delete('/task/{task}', [TaskController::class, 'destroy']);
