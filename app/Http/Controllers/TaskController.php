@@ -24,6 +24,7 @@ public function store(Request $request)
     }
     $task = new Task;
     $task->name = $request->name;
+    $task->created_at = now(); //sets time to real-time
     $task->save();
     return redirect('/');
 }
