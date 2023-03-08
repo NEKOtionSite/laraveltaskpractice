@@ -11,7 +11,6 @@
         <!-- New Task Form -->
         <form action="{{ url('task') }}" method="POST" class="form-horizontal">
             {{ csrf_field() }}
- 
             <!-- Task Name -->
             <div class="form-group">
                 <label for="task" class="col-sm-3 control-label">Task Name:</label>
@@ -21,6 +20,7 @@
                 </div>
             </div>
  
+            <br>
             <!-- Add Task Button -->
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-6">
@@ -31,9 +31,7 @@
             </div>
         </form>
     </div>
- 
   
- 
     <!-- Current Tasks -->
     @if (count($tasks) > 0)
         <div class="panel panel-default">
@@ -58,7 +56,6 @@
                                 <td class="table-text">
                                     <div>{{ $task->name }}</div>
                                 </td>
-               
                                 <!-- Delete Button -->
                                 <td class="delete-button">
                                     <form action="{{ url('task/'.$task->id) }}" method="POST" id="delete-task-{{ $task->id }}">
@@ -68,9 +65,7 @@
                                         <button type="submit" class="btn btn-danger delete-task" data-task-id="{{ $task->id }}">
                                         <i class="fa fa-trash"></i> Remove Task
                                         </button>
-                                    
                                     </form>
-                                    
                                 </td>
                             </tr>
                         @endforeach
