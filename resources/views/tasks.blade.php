@@ -14,7 +14,7 @@
  
             <!-- Task Name -->
             <div class="form-group">
-                <label for="task" class="col-sm-3 control-label">Task</label>
+                <label for="task" class="col-sm-3 control-label">Task Name:</label>
  
                 <div class="col-sm-6">
                     <input type="text" name="name" id="task-name" class="form-control">
@@ -25,15 +25,14 @@
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-6">
                     <button type="submit" class="btn btn-default">
-                        <i class="fa fa-plus"></i> Add Task
+                        <i class="fa fa-plus"></i> Add a Task
                     </button>
                 </div>
             </div>
         </form>
     </div>
  
-    <!-- TODO: Current Tasks -->
-     <!-- Create Task Form... -->
+  
  
     <!-- Current Tasks -->
     @if (count($tasks) > 0)
@@ -52,24 +51,26 @@
                     </thead>
  
                     <!-- Table Body -->
-                    <tbody>
+                    <tbody class="tbody">
                         @foreach ($tasks as $task)
                             <tr>
                                 <!-- Task Name -->
                                 <td class="table-text">
                                     <div>{{ $task->name }}</div>
                                 </td>
- 
-                                <td>
-                                    <!-- TODO: Delete Button -->
-                                    <form action="{{ url('task/'.$task->id) }}" method="POST">
-                                    {{ csrf_field() }}
-                                    {{ method_field('DELETE') }}
- 
-                                   <button type="submit" class="btn btn-danger">
-                                     <i class="fa fa-trash"></i> Delete
-            </button>
-        </form>
+               
+                                <!-- Delete Button -->
+                                <td class="delete-button">
+                                    <form action="{{ url('task/'.$task->id) }}" method="POST" id="delete-task-{{ $task->id }}">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+
+                                        <button type="submit" class="btn btn-danger delete-task" data-task-id="{{ $task->id }}">
+                                        <i class="fa fa-trash"></i> Remove Task
+                                        </button>
+                                    
+                                    </form>
+                                    
                                 </td>
                             </tr>
                         @endforeach
