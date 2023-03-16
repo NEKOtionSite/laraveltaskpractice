@@ -43,5 +43,13 @@ public function destroy(Task $task)
 
     return redirect('/');
 }
+public function edit(string $id): View
+    {
+        $task = Task::find($id);
+        return view('tasks.edit')->with('tasks', $task);
+    
+    }
+
+    
 
 }

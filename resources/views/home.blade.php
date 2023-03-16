@@ -1,24 +1,63 @@
-@extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    {{ Auth::user()->name }}
-                    <br>
-                    {{$msg}}
+<!doctype html>
+<html lang = "en">
+   <head>
+      <meta charset = "utf-8">
+      <title>jQuery UI Dialog functionality</title>
+      <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+         rel = "stylesheet">
+      <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+      
+      <!-- CSS -->
+      <style>
+         .ui-widget-header,.ui-state-default, ui-button {
+            background:#b9cd6d;
+            border: 1px solid #b9cd6d;
+            color: #FFFFFF;
+            font-weight: bold;
+         }
+      </style>
+      
+      <!-- Javascript -->
+      <script>
+         $(function() {
+            $( "#dialog-1" ).dialog({
+               autoOpen: false,  
+            });
+            $( "#opener" ).click(function() {
+               $( "#dialog-1" ).dialog( "open" );
+            });
+         });
+      </script>
+   </head>
+   
+   <body>
+      <!-- HTML --> 
+      <div id = "dialog-1" >
+         <form action="{{ url('task') }}" method="POST" class="form-horizontal">
+            {{ csrf_field() }}
+            <!-- Task Name -->
+            <div class="form-group">
+                <label for="task" class="col-sm-3 control-label">Task Name:</label>
+ 
+                <div class="col-sm-6">
+                    <input type="text" name="name" id="task-name" class="form-control">
                 </div>
             </div>
-        </div>
+
+            <br>
+ 
+            <!-- Add Task Button -->
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-6">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-plus"></i> Add a Task
+                    </button>
+                </div>
+            </div>
+        </form>
     </div>
-</div>
-@endsection
+        </div>
+      <button id = "opener">Open Dialog</button>
+   </body>
+</html>

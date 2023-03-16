@@ -6,22 +6,84 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
+    <title>Practice</title>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+         rel = "stylesheet">
+      <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+      
+      <!-- CSS -->
+      <style>
+
+
+         .ui-widget-header,.ui-state-default, ui-button {
+            background: linear-gradient(to bottom, #00008B, white);
+                border: 1px solid #b9cd6d;
+                color: #00008B;
+                font-weight: bold;
+        
+        }
+         #opener {
+            display:block;
+            margin: 0 auto; 
+            border-radius: 5px;
+            font-size: 30px;
+            padding: 15px 35px;
+            background: linear-gradient(to bottom left, #0000A5, white);
+            font-family: "Times New Roman", serif;
+            border: 2px solid 00008B ;
+            color: white;
+         }
+         .panel-default {
+             margin: 0 auto;
+             width: 50%;
+             border-color: black;
+         }
+         .card-header {
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             background: linear-gradient(to bottom, #00008B, white);
+             font-family: "Times New Roman", serif;
+             color: white;
+         }
+         .card {
+            background: linear-gradient(to bottom right, #00008B, white);
+        
+         }
+         .btn {
+        background: linear-gradient(to bottom, #00008B, white);
+        color: white;
+        }
+
+
+      </style>
+
+      <!-- Javascript -->
+      <script>
+         $(function() {
+            $( "#dialog-1" ).dialog({
+               autoOpen: false,  
+            });
+            $( "#opener" ).click(function() {
+               $( "#dialog-1" ).dialog( "open" );
+            });
+         });
+      </script>
+
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    Welcome to Laravel
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
